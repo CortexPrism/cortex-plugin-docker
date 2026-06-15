@@ -1,0 +1,89 @@
+{
+  "name": "cortex-plugin-docker",
+  "version": "1.0.0",
+  "description": "Manage containers and clusters",
+  "kind": "esm",
+  "entryPoint": "mod.ts",
+  "runtime": "deno",
+  "author": "CortexPrism",
+  "license": "MIT",
+  "repository": "https://github.com/CortexPrism/cortex-plugin-docker",
+  "capabilities": [
+    "tools",
+    "shell:run",
+    "fs:read"
+  ],
+  "tools": [
+    {
+      "name": "docker_list",
+      "description": "List containers",
+      "params": [
+        { "name": "all", "type": "boolean", "description": "Show all containers (including stopped)", "required": false },
+        { "name": "filter", "type": "string", "description": "Filter by status: running, stopped, all", "required": false }
+      ]
+    },
+    {
+      "name": "docker_run",
+      "description": "Run a container",
+      "params": [
+        { "name": "image", "type": "string", "description": "Docker image to run", "required": true },
+        { "name": "name", "type": "string", "description": "Container name", "required": false },
+        { "name": "ports", "type": "string", "description": "Port mapping (e.g. 8080:80)", "required": false },
+        { "name": "env_vars", "type": "string", "description": "Environment variables as JSON", "required": false },
+        { "name": "command", "type": "string", "description": "Override default command", "required": false },
+        { "name": "detach", "type": "boolean", "description": "Run container in background", "required": false }
+      ]
+    },
+    {
+      "name": "docker_logs",
+      "description": "Get container logs",
+      "params": [
+        { "name": "container_id", "type": "string", "description": "Container ID or name", "required": true },
+        { "name": "tail", "type": "number", "description": "Number of lines to show", "required": false },
+        { "name": "follow", "type": "boolean", "description": "Follow log output", "required": false }
+      ]
+    },
+    {
+      "name": "docker_stop",
+      "description": "Stop container",
+      "params": [
+        { "name": "container_id", "type": "string", "description": "Container ID or name", "required": true },
+        { "name": "force", "type": "boolean", "description": "Force stop the container", "required": false }
+      ]
+    },
+    {
+      "name": "k8s_get_pods",
+      "description": "Get Kubernetes pods",
+      "params": [
+        { "name": "namespace", "type": "string", "description": "Kubernetes namespace", "required": false },
+        { "name": "label_selector", "type": "string", "description": "Label selector filter", "required": false }
+      ]
+    },
+    {
+      "name": "k8s_describe",
+      "description": "Describe a K8s resource",
+      "params": [
+        { "name": "resource_type", "type": "string", "description": "Type of resource", "required": true },
+        { "name": "name", "type": "string", "description": "Resource name", "required": true },
+        { "name": "namespace", "type": "string", "description": "Kubernetes namespace", "required": false }
+      ]
+    }
+  ],
+  "ui": {
+    "section": "Docker & Kubernetes",
+    "fields": [
+      { "key": "dockerHost", "label": "Docker Host", "type": "text", "description": "Docker daemon socket", "defaultValue": "unix:///var/run/docker.sock" },
+      { "key": "dockerRegistry", "label": "Docker Registry", "type": "text", "description": "Default registry URL (optional)" },
+      { "key": "kubeconfigPath", "label": "Kubeconfig Path", "type": "text", "description": "Path to kubeconfig file", "defaultValue": "~/.kube/config" },
+      { "key": "defaultNamespace", "label": "Default Namespace", "type": "text", "description": "Default Kubernetes namespace", "defaultValue": "default" }
+    ]
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "cortex": ">=1.0.0"
+  },
+  "aiDisclosure": {
+    "tools": ["Claude Code (Anthropic)"],
+    "humanReview": true
+  }
+}
