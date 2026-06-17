@@ -20,10 +20,12 @@ cortex chat --plugin cortex-plugin-docker
 ## Tools
 
 ### docker_list — List containers
+
 - `all` (boolean, default false) — Show all containers
 - `filter` (string, optional) — running, stopped, all
 
 ### docker_run — Run a container
+
 - `image` (string, required) — Docker image
 - `name` (string, optional) — Container name
 - `ports` (string, optional) — Port mapping
@@ -32,19 +34,23 @@ cortex chat --plugin cortex-plugin-docker
 - `detach` (boolean) — Run in background
 
 ### docker_logs — Get container logs
+
 - `container_id` (string, required)
 - `tail` (number, 100)
 - `follow` (boolean)
 
 ### docker_stop — Stop container
+
 - `container_id` (string, required)
 - `force` (boolean)
 
 ### k8s_get_pods — Get Kubernetes pods
+
 - `namespace` (string, default)
 - `label_selector` (string)
 
 ### k8s_describe — Describe K8s resource
+
 - `resource_type` (enum: pod/deployment/service/node)
 - `name` (string, required)
 - `namespace` (string)
