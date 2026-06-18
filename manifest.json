@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-docker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Manage containers and clusters",
   "kind": "esm",
   "entryPoint": "mod.ts",
@@ -42,7 +42,12 @@
           "description": "Docker image to run",
           "required": true
         },
-        { "name": "name", "type": "string", "description": "Container name", "required": false },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Container name",
+          "required": false
+        },
         {
           "name": "ports",
           "type": "string",
@@ -139,7 +144,12 @@
           "description": "Type of resource",
           "required": true
         },
-        { "name": "name", "type": "string", "description": "Resource name", "required": true },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Resource name",
+          "required": true
+        },
         {
           "name": "namespace",
           "type": "string",
@@ -150,34 +160,38 @@
     }
   ],
   "ui": {
-    "section": "Docker & Kubernetes",
-    "fields": [
+    "settings": [
       {
-        "key": "dockerHost",
-        "label": "Docker Host",
-        "type": "text",
-        "description": "Docker daemon socket",
-        "defaultValue": "unix:///var/run/docker.sock"
-      },
-      {
-        "key": "dockerRegistry",
-        "label": "Docker Registry",
-        "type": "text",
-        "description": "Default registry URL (optional)"
-      },
-      {
-        "key": "kubeconfigPath",
-        "label": "Kubeconfig Path",
-        "type": "text",
-        "description": "Path to kubeconfig file",
-        "defaultValue": "~/.kube/config"
-      },
-      {
-        "key": "defaultNamespace",
-        "label": "Default Namespace",
-        "type": "text",
-        "description": "Default Kubernetes namespace",
-        "defaultValue": "default"
+        "section": "Docker & Kubernetes",
+        "fields": [
+          {
+            "key": "dockerHost",
+            "label": "Docker Host",
+            "type": "text",
+            "description": "Docker daemon socket",
+            "default": "unix:///var/run/docker.sock"
+          },
+          {
+            "key": "dockerRegistry",
+            "label": "Docker Registry",
+            "type": "text",
+            "description": "Default registry URL (optional)"
+          },
+          {
+            "key": "kubeconfigPath",
+            "label": "Kubeconfig Path",
+            "type": "text",
+            "description": "Path to kubeconfig file",
+            "default": "~/.kube/config"
+          },
+          {
+            "key": "defaultNamespace",
+            "label": "Default Namespace",
+            "type": "text",
+            "description": "Default Kubernetes namespace",
+            "default": "default"
+          }
+        ]
       }
     ]
   },
@@ -186,7 +200,10 @@
     "cortex": ">=1.0.0"
   },
   "aiDisclosure": {
-    "tools": ["Claude Code (Anthropic)"],
+    "tools": [
+      "Claude Code (Anthropic)"
+    ],
     "humanReview": true
-  }
+  },
+  "homepage": "https://github.com/CortexPrism/cortex-plugin-docker"
 }
