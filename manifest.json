@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-docker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Manage containers and clusters",
   "kind": "esm",
   "entryPoint": "mod.ts",
@@ -169,7 +169,7 @@
             "label": "Docker Host",
             "type": "text",
             "description": "Docker daemon socket",
-            "default": "unix:///var/run/docker.sock"
+            "defaultValue": "unix:///var/run/docker.sock"
           },
           {
             "key": "dockerRegistry",
@@ -182,14 +182,14 @@
             "label": "Kubeconfig Path",
             "type": "text",
             "description": "Path to kubeconfig file",
-            "default": "~/.kube/config"
+            "defaultValue": "~/.kube/config"
           },
           {
             "key": "defaultNamespace",
             "label": "Default Namespace",
             "type": "text",
             "description": "Default Kubernetes namespace",
-            "default": "default"
+            "defaultValue": "default"
           }
         ]
       }
@@ -197,7 +197,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "cortex": ">=1.0.0"
+    "cortex": ">=0.51.0"
   },
   "aiDisclosure": {
     "tools": [
